@@ -1,3 +1,5 @@
+import Stock.Stock;
+
 public class Store {
     String name;
     double capital;
@@ -14,5 +16,13 @@ public class Store {
 
     public static Store getInstance(){
         return InstanceHolder.INSTANCE;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public double getCapital(){
+        return this.capital;
     }
 }

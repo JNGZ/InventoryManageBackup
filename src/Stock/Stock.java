@@ -1,3 +1,5 @@
+package Stock;
+
 import java.util.ArrayList;
 
 public class Stock {

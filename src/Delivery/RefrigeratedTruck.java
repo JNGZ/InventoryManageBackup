@@ -1,3 +1,7 @@
+package Delivery;
+
+import Stock.Item;
+
 import java.util.ArrayList;
 
 public class RefrigeratedTruck extends Truck {
