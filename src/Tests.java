@@ -1,5 +1,6 @@
-import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
 
 public class Tests {
 
@@ -9,7 +10,8 @@ public class Tests {
     }
 
     @Test
-    public void something(){
-        
+    public void testCSV() throws IOException {
+        CSVWrite writer = new CSVWrite();
+        writer.write("./assets/test.csv");
     }
 }

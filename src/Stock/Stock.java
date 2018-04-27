@@ -4,10 +4,18 @@ import java.util.ArrayList;
 
 public class Stock {
 
-    ArrayList<Item> items = new ArrayList<>();
+    ArrayList<Item> items;
 
     public Stock(){
+        items = new ArrayList<>();
+    }
 
+    public void addItem(Item item){
+        items.add(item);
+    }
+
+    public void removeItem(Item item){
+        items.remove(item);
     }
 
 }
