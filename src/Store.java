@@ -11,7 +11,7 @@ public class Store {
     }
 
     private static class InstanceHolder {
-        private final static Store INSTANCE = new Store("Luke's Store");
+        private final static Store INSTANCE = new Store("SuperMart");
     }
 
     public static Store getInstance(){
