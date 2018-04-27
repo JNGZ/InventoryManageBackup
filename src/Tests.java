@@ -1,3 +1,4 @@
+import CSV.CSVUtility;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -10,8 +11,8 @@ public class Tests {
     }
 
     @Test
-    public void testCSV() throws IOException {
-        CSVWrite writer = new CSVWrite();
-        writer.write("./assets/test.csv");
+    public void testOpenCSV() throws IOException {
+        CSVUtility openCSV = new CSVUtility();
+        openCSV.write("./assets/test.csv");
     }
 }
