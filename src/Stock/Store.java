@@ -1,5 +1,6 @@
+package Stock;
+
 import Delivery.Manifest;
-import Stock.Stock;
 
 public class Store {
     String name;
@@ -22,15 +23,19 @@ public class Store {
         return InstanceHolder.INSTANCE;
     }
 
+    public String getName(){
+        return name;
+    }
+
     public double getCapital(){
-        return this.capital;
+        return capital;
     }
 
     public Stock getStock(){
-        return this.stock;
+        return stock;
     }
 
     public Manifest getManifest() {
-        return this.manifest;
+        return manifest;
     }
 }
