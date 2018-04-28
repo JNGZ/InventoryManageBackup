@@ -16,8 +16,8 @@ public class RefrigeratedTruck extends Truck {
         this.cargo = new ArrayList<>();
         this.loadCargo();
         this.cargoCap = 800;
-        //this.temperature = getTemperature();
-        //this.cost = 900+(200*Math.pow(0.7, temperature/5));
+        this.temperature = getTemperature();
+        this.cost = 900+(200*Math.pow(0.7, temperature/5));
     }
 
     @Override
@@ -33,8 +33,8 @@ public class RefrigeratedTruck extends Truck {
     public int getTemperature(){
         int temp = 0;
         for (Object[] obj:this.cargo) {
-            if ((int)obj[1] < temp){
-                temp = (int)obj[1];
+            if ((Integer.parseInt(obj[1].toString()) < temp)){
+                temp = (Integer.parseInt(obj[1].toString()));
             }
         }
         return temp;
