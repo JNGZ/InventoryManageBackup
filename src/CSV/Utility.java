@@ -12,9 +12,11 @@ import com.opencsv.CSVWriter;
 
 public class Utility {
 
-    public ArrayList<Item> readItemList(String fileName){
+    private static ArrayList<Item> items;
+
+    public static ArrayList<Item> readItemList(String fileName){
         try{
-            ArrayList<Item> items = new ArrayList<>();
+            items = new ArrayList<>();
             CSVReader csvReader = new CSVReader(new FileReader(fileName));
             String[] nextRecord;
             while ((nextRecord = csvReader.readNext()) != null){
@@ -29,7 +31,7 @@ public class Utility {
         }
     }
 
-    public void writeItemList(String fileName, ArrayList<Item> items){
+    public static void writeItemList(String fileName, ArrayList<Item> items){
         try{
             CSVWriter csvWriter = new CSVWriter(new FileWriter(fileName),
                     CSVWriter.DEFAULT_SEPARATOR,
@@ -46,7 +48,7 @@ public class Utility {
         }
     }
 
-    public ArrayList<Object[]> readManifest(String fileName, boolean refrigerated){
+    public static ArrayList<Object[]> readManifest(String fileName, boolean refrigerated){
         try{
             ArrayList<Object[]> items = new ArrayList<>();
             CSVReader csvReader = new CSVReader(new FileReader(fileName));
@@ -80,7 +82,7 @@ public class Utility {
         }
     }
 
-    public void writeManifest(String fileName, ArrayList<Object[]> refTruckCargo, ArrayList<Object[]> ordTruckCargo){
+    public static void writeManifest(String fileName, ArrayList<Object[]> refTruckCargo, ArrayList<Object[]> ordTruckCargo){
         try{
             CSVWriter csvWriter = new CSVWriter(new FileWriter(fileName),
                     CSVWriter.DEFAULT_SEPARATOR,
@@ -103,11 +105,20 @@ public class Utility {
         }
     }
 
-    public Item convertStringArrToItem(String name, String cost, String price, String reorderPoint, String reorderAmount, String temperature){
+    public static Item getItem(String name){
+        for (Item item:items) {
+            if (item.name.equalsIgnoreCase(name)){
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public static Item convertStringArrToItem(String name, String cost, String price, String reorderPoint, String reorderAmount, String temperature){
         return new Item(name, Integer.parseInt(cost), Integer.parseInt(price), Integer.parseInt(reorderPoint), Integer.parseInt(reorderAmount), Integer.parseInt(temperature));
     }
 
-    public String[] convertItemToStringArr(Item item){
+    public static String[] convertItemToStringArr(Item item){
         String[] temp = {item.name, String.valueOf(item.cost), String.valueOf(item.price), String.valueOf(item.reorderPoint), String.valueOf(item.reorderAmount), String.valueOf(item.temperature)};
         return temp;
     }

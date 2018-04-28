@@ -6,21 +6,13 @@ import java.util.ArrayList;
 
 public class Stock {
 
-    private ArrayList<Item> items;
-    private Utility utility;
+    ArrayList<Item> items;
+    Utility utility;
 
     public Stock(){
         items = new ArrayList<>();
         utility = new Utility();
         loadItems();
-    }
-
-    public void addItem(Item item){
-        items.add(item);
-    }
-
-    public void removeItem(Item item){
-        items.remove(item);
     }
 
     public void loadItems() {

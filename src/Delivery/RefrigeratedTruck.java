@@ -1,15 +1,16 @@
 package Delivery;
 
 import CSV.Utility;
+import Stock.Item;
 
 import java.util.ArrayList;
 
 public class RefrigeratedTruck extends Truck {
 
-    private double cost;
-    private int cargoCap, temperature;
-    private ArrayList<Object[]> cargo;
-    private Utility utility;
+    double cost;
+    int cargoCap, temperature;
+    ArrayList<Object[]> cargo;
+    Utility utility;
 
     RefrigeratedTruck(){
         this.utility = new Utility();
@@ -27,14 +28,16 @@ public class RefrigeratedTruck extends Truck {
 
     @Override
     public ArrayList<Object[]> getCargo(){
-        return this.cargo;
+        return cargo;
     }
 
     public int getTemperature(){
         int temp = 0;
-        for (Object[] obj:this.cargo) {
-            if ((Integer.parseInt(obj[1].toString()) < temp)){
-                temp = (Integer.parseInt(obj[1].toString()));
+        Item item;
+        for (Object[] obj:cargo) {
+            item = utility.getItem(obj[0].toString());
+            if (item.temperature < temp){
+                temp = item.temperature;
             }
         }
         return temp;

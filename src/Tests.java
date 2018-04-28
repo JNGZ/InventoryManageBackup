@@ -1,6 +1,7 @@
 import CSV.Utility;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 
 public class Tests {
@@ -42,6 +43,11 @@ public class Tests {
 
     @Test
     public void testCapital(){
-        System.out.println(store.getCapital());
+        assertEquals(100000.00f ,store.getCapital(), 0);
+    }
+
+    @Test
+    public void testTemperature(){
+        assertEquals(-20 ,store.getManifest().getRefTruck().getTemperature());
     }
 }

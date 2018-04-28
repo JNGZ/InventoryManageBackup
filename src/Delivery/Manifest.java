@@ -8,10 +8,10 @@ import java.util.ArrayList;
 
 public class Manifest {
 
-    private ArrayList<Item> manifest;
-    private RefrigeratedTruck refTruck;
-    private OrdinaryTruck ordTruck;
-    private Utility utility;
+    ArrayList<Item> manifest;
+    RefrigeratedTruck refTruck;
+    OrdinaryTruck ordTruck;
+    Utility utility;
 
     public Manifest(){
         utility = new Utility();

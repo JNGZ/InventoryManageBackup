@@ -2,14 +2,14 @@ import Delivery.Manifest;
 import Stock.Stock;
 
 public class Store {
-    private String name;
-    private double capital;
-    private Stock stock;
-    private Manifest manifest;
+    String name;
+    float capital;
+    Stock stock;
+    Manifest manifest;
 
     protected Store(String name) {
         this.name = name;
-        this.capital = 100000.00;
+        this.capital = 100000.00f;
         this.stock = new Stock();
         this.manifest = new Manifest();
     }
@@ -20,10 +20,6 @@ public class Store {
 
     public static Store getInstance(){
         return InstanceHolder.INSTANCE;
-    }
-
-    public String getName(){
-        return this.name;
     }
 
     public double getCapital(){

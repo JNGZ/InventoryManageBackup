@@ -6,10 +6,10 @@ import java.util.ArrayList;
 
 public class OrdinaryTruck extends Truck {
 
-    private double cost;
-    private int cargoCap;
-    private ArrayList<Object[]> cargo;
-    private Utility utility;
+    double cost;
+    int cargoCap;
+    ArrayList<Object[]> cargo;
+    Utility utility;
 
     OrdinaryTruck(){
         this.utility = new Utility();
@@ -26,7 +26,7 @@ public class OrdinaryTruck extends Truck {
 
     @Override
     public ArrayList<Object[]> getCargo(){
-        return this.cargo;
+        return cargo;
     }
 
 }
