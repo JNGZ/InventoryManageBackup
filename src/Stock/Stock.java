@@ -1,19 +1,18 @@
 package Stock;
 
-import CSV.CSVFormatException;
-import CSV.CSVUtility;
+import CSV.Utility;
 
 import java.util.ArrayList;
 
 public class Stock {
 
-    ArrayList<Item> items;
-    CSVUtility csvUtility;
+    private ArrayList<Item> items;
+    private Utility utility;
 
     public Stock(){
         items = new ArrayList<>();
-        csvUtility = new CSVUtility();
-        loadArray();
+        utility = new Utility();
+        loadItems();
     }
 
     public void addItem(Item item){
@@ -24,20 +23,15 @@ public class Stock {
         items.remove(item);
     }
 
-    public void loadArray() {
-        try{
-            items = csvUtility.read("./assets/item_properties.csv");
-        } catch (CSVFormatException e){
-            e.printStackTrace();
-        }
+    public void loadItems() {
+        items = utility.readItemList("./assets/item_properties.csv");
     }
 
-    public void saveArray() {
-        try{
-            csvUtility.writeItemList("./assets/item_properties.csv", items);
-        } catch (CSVFormatException e){
-            e.printStackTrace();
-        }
+    public void saveItems() {
+        utility.writeItemList("./assets/item_properties.csv", items);
     }
 
+    public ArrayList<Item> getItems(){
+        return items;
+    }
 }

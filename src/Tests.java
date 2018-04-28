@@ -1,34 +1,47 @@
-import CSV.CSVFormatException;
-import CSV.CSVUtility;
+import CSV.Utility;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.IOException;
 
 public class Tests {
 
-    CSVUtility csvUtility;
-
+    Utility utility;
     Store store;
 
     @Before@Test
     public void init(){
-        csvUtility = new CSVUtility();
+        utility = new Utility();
         store = Store.getInstance();
     }
 
     @Test
-    public void testCSVWrite() throws CSVFormatException {
-
+    public void testReadItemList(){
+        store.getStock().loadItems();
     }
 
     @Test
-    public void testCSVRead() throws CSVFormatException {
-        csvUtility.read("./assets/item_properties.csv");
+    public void testStock(){
+        store.getStock().getItems();
     }
 
     @Test
-    public void testWriteItemList() throws CSVFormatException {
-        store.stock.saveArray();
+    public void testWriteItemList(){
+        store.getStock().saveItems();
+    }
+
+    @Test
+    public void testReadManifest(){
+        System.out.println("Ref: " + store.getManifest().getRefTruck().getCargo());
+        System.out.println("Ord: " + store.getManifest().getOrdTruck().getCargo());
+    }
+
+    @Test
+    public void testWriteManifest(){
+        store.getManifest().saveManifest();
+    }
+
+    @Test
+    public void testCapital(){
+        System.out.println(store.getCapital());
     }
 }

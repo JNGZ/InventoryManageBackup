@@ -1,16 +1,17 @@
-import CSV.CSVUtility;
+import Delivery.Manifest;
 import Stock.Stock;
 
-import java.io.IOException;
-
 public class Store {
-    String name;
-    double capital;
-    Stock stock;
+    private String name;
+    private double capital;
+    private Stock stock;
+    private Manifest manifest;
 
     protected Store(String name) {
         this.name = name;
+        this.capital = 100000.00;
         this.stock = new Stock();
+        this.manifest = new Manifest();
     }
 
     private static class InstanceHolder{
@@ -27,5 +28,13 @@ public class Store {
 
     public double getCapital(){
         return this.capital;
+    }
+
+    public Stock getStock(){
+        return this.stock;
+    }
+
+    public Manifest getManifest() {
+        return this.manifest;
     }
 }
