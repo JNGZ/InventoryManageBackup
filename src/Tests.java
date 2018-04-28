@@ -1,27 +1,34 @@
+import CSV.CSVFormatException;
 import CSV.CSVUtility;
-import Stock.Item;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class Tests {
 
+    CSVUtility csvUtility;
+
+    Store store;
+
     @Before@Test
     public void init(){
-        Store store = Store.getInstance();
+        csvUtility = new CSVUtility();
+        store = Store.getInstance();
     }
 
     @Test
-    public void testCSVWrite() throws IOException {
-        CSVUtility openCSV = new CSVUtility();
-        openCSV.write("./assets/test.csv");
+    public void testCSVWrite() throws CSVFormatException {
+
     }
 
     @Test
-    public void testCSVRead() throws IOException {
-        CSVUtility openCSV = new CSVUtility();
-        openCSV.read("./assets/item_properties.csv");
+    public void testCSVRead() throws CSVFormatException {
+        csvUtility.read("./assets/item_properties.csv");
+    }
+
+    @Test
+    public void testWriteItemList() throws CSVFormatException {
+        store.stock.saveArray();
     }
 }

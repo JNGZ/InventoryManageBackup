@@ -1,16 +1,19 @@
+import CSV.CSVUtility;
 import Stock.Stock;
+
+import java.io.IOException;
 
 public class Store {
     String name;
     double capital;
-    Stock inventory;
+    Stock stock;
 
-    protected Store(String name){
+    protected Store(String name) {
         this.name = name;
-        this.inventory = new Stock();
+        this.stock = new Stock();
     }
 
-    private static class InstanceHolder {
+    private static class InstanceHolder{
         private final static Store INSTANCE = new Store("SuperMart");
     }
 

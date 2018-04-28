@@ -2,8 +2,8 @@ package Stock;
 
 public class Item {
 
-    String name;
-    int cost, price, reorderPoint, reorderAmount, temperature;
+    public String name;
+    public int cost, price, reorderPoint, reorderAmount, temperature;
 
     public Item(String name, int cost, int price, int reorderPoint, int reorderAmount, int temperature){
         this.name = name;
@@ -21,6 +21,4 @@ public class Item {
         this.reorderPoint = reorderPoint;
         this.reorderAmount = reorderAmount;
     }
-
-
 }

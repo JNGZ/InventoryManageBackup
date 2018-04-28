@@ -11,22 +11,42 @@ import com.opencsv.CSVWriter;
 
 public class CSVUtility {
 
-    public void write(String fileName) throws IOException {
+    public void writeItemList(String fileName, ArrayList<Item> items) throws CSVFormatException{
         try{
-            CSVWriter csvWriter = new CSVWriter(new FileWriter(fileName, true),
+            CSVWriter csvWriter = new CSVWriter(new FileWriter(fileName, false),
                     CSVWriter.DEFAULT_SEPARATOR,
                     CSVWriter.NO_QUOTE_CHARACTER,
                     CSVWriter.DEFAULT_ESCAPE_CHARACTER,
                     CSVWriter.DEFAULT_LINE_END);
-            String[] testRecord = {"1", "2", "3"};
-            csvWriter.writeNext(testRecord);
+            for (Item item:items) {
+                String[] temp = convertItemToStringArr(item);
+                csvWriter.writeNext(temp);
+            }
             csvWriter.close();
-        } catch (Exception err){
+        } catch (IOException e){
+            e.printStackTrace();
+        }
 
+    }
+
+    public void write(String fileName, ArrayList<Item> items, boolean append) throws CSVFormatException{
+        try{
+            CSVWriter csvWriter = new CSVWriter(new FileWriter(fileName, append),
+                    CSVWriter.DEFAULT_SEPARATOR,
+                    CSVWriter.NO_QUOTE_CHARACTER,
+                    CSVWriter.DEFAULT_ESCAPE_CHARACTER,
+                    CSVWriter.DEFAULT_LINE_END);
+            for (Item item:items) {
+                String[] temp = convertItemToStringArr(item);
+                csvWriter.writeNext(temp);
+            }
+            csvWriter.close();
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 
-    public ArrayList<Item> read(String fileName) throws IOException {
+    public ArrayList<Item> read(String fileName) throws CSVFormatException {
         try{
             ArrayList<Item> items = new ArrayList<>();
             CSVReader csvReader = new CSVReader(new FileReader(fileName));
@@ -43,7 +63,11 @@ public class CSVUtility {
         } catch (Exception err){
             return null;
         }
+    }
 
+    public String[] convertItemToStringArr(Item item){
+        String[] temp = {item.name, String.valueOf(item.cost), String.valueOf(item.price), String.valueOf(item.reorderPoint), String.valueOf(item.reorderAmount), String.valueOf(item.temperature)};
+        return temp;
     }
 
 }
