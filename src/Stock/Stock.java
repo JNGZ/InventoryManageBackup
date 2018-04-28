@@ -1,5 +1,6 @@
 package Stock;
 
+import CSV.CSVUtility;
 import java.util.ArrayList;
 
 public class Stock {
@@ -16,6 +17,10 @@ public class Stock {
 
     public void removeItem(Item item){
         items.remove(item);
+    }
+
+    public void loadArray(){
+
     }
 
 }
